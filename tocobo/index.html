@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOCOBO × SIRIAI — IN MY SUN ERA 크리에이터 모집</title>
+  <meta name="description" content="TOCOBO × SIRIAI 팝업 크리에이터 모집. LECT 성수 1F, 5/18~5/24. 팔로워 조건 없음.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --red:         #dc272d;
+      --red-soft:    #fdf0f0;
+      --red-dark:    #b81e23;
+
+      --white:       #ffffff;
+      --bg:          #f7f6f5;
+      --ink:         #231f20;
+      --ink-mid:     #5c5759;
+      --ink-light:   #9a9596;
+      --border:      #e0dede;
+      --border-sel:  #dc272d;
+
+      --font-display: 'Instrument Sans', 'Noto Sans KR', sans-serif;
+      --font-body:    'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  40px;
+      --space-xl:  64px;
+
+      --radius-sm:   8px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-pill: 999px;
+
+      --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+      --dur-fast: 160ms;
+      --dur-med:  260ms;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       LAYOUT UTILITY
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============================================================
+       PAGE VISIBILITY TOGGLE
+    ============================================================ */
+    #landing-page {
+      display: block;
+    }
+
+    #form-page {
+      display: none;
+    }
+
+    /* ============================================================
+       PROGRESS BAR (form only)
+    ============================================================ */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      z-index: 200;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--red);
+      transition: width var(--dur-med) var(--ease);
+      width: 33%;
+    }
+
+    /* ============================================================
+       LANDING — HEADER
+    ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .brand-wordmark span {
+      color: var(--red);
+    }
+
+    .header-badge {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--ink-mid);
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       LANDING — HERO
+    ============================================================ */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .hero-image {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.88;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 30%,
+        rgba(35, 31, 32, 0.72) 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 24px;
+      color: var(--white);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 8vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       LANDING — EVENT INFO
+    ============================================================ */
+    .info-section {
+      padding: var(--space-lg) 0;
+      background: var(--white);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--space-md);
+      line-height: 1.3;
+    }
+
+    .section-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: var(--space-md);
+    }
+
+    .info-card {
+      padding: 16px 12px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+
+    .info-card-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .info-card-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+
+    .info-card-value {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       LANDING — KIT SECTION
+    ============================================================ */
+    .kit-section {
+      padding: var(--space-lg) 0;
+      background: var(--bg);
+    }
+
+    .kit-image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+      background: var(--white);
+    }
+
+    .kit-image {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .kit-contents {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .kit-contents-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 14px;
+    }
+
+    .kit-list {
+      list-style: none;
+    }
+
+    .kit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kit-list li:last-child {
+      border-bottom: none;
+    }
+
+    .kit-list li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .kit-value-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px var(--space-md);
+      background: var(--red);
+      border-radius: var(--radius-md);
+    }
+
+    .kit-value-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .kit-value-amount {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ============================================================
+       LANDING — NOTES SECTION
+    ============================================================ */
+    .notes-section {
+      padding: var(--space-lg) 0;
+      background: var(--white);
+    }
+
+    .notes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: var(--space-md);
+    }
+
+    .notes-list li {
+      display: flex;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    .notes-list li::before {
+      content: '—';
+      color: var(--ink-light);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       LANDING — CTA SECTION
+    ============================================================ */
+    .cta-section {
+      padding: var(--space-lg) 0 var(--space-xl);
+      background: var(--white);
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .cta-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink-mid);
+      margin-bottom: var(--space-md);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 18px 32px;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: background var(--dur-fast) var(--ease),
+                  transform var(--dur-fast) var(--ease),
+                  box-shadow var(--dur-fast) var(--ease);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(220, 39, 45, 0.28);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .btn-primary:disabled {
+      background: var(--border);
+      color: var(--ink-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ============================================================
+       FORM PAGE — SHELL
+    ============================================================ */
+    .form-shell {
+      min-height: 100vh;
+      background: var(--white);
+    }
+
+    .form-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .form-header-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: color var(--dur-fast) var(--ease);
+      border: none;
+      background: none;
+    }
+
+    .form-header-back:hover {
+      color: var(--ink);
+    }
+
+    .form-header-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .form-header-step {
+      margin-left: auto;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+    }
+
+    .form-body {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    /* Step visibility */
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .step-subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink-mid);
+      margin-bottom: var(--space-lg);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       FORM — FIELDS
+    ============================================================ */
+    .form-field {
+      margin-bottom: var(--space-md);
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-mid);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-label .required-mark {
+      color: var(--red);
+      margin-left: 2px;
+    }
+
+    .form-input {
+      display: block;
+      width: 100%;
+      padding: 15px 16px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--dur-fast) var(--ease);
+    }
+
+    .form-input::placeholder {
+      color: var(--ink-light);
+    }
+
+    .form-input:focus {
+      border-color: var(--red);
+    }
+
+    .form-input.has-error {
+      border-color: var(--red);
+      background: #fff8f8;
+    }
+
+    .field-error {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--red);
+      margin-top: 6px;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    /* ============================================================
+       FORM — DATE CARD GRID
+    ============================================================ */
+    .date-group-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      margin-bottom: 12px;
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: var(--space-md);
+    }
+
+    .date-card {
+      position: relative;
+      padding: 16px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease);
+      user-select: none;
+    }
+
+    .date-card.selected {
+      border-color: var(--border-sel);
+      background: var(--red-soft);
+    }
+
+    .date-card input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .date-card-day {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .date-card-weekday {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--ink-mid);
+    }
+
+    .date-card.selected .date-card-day {
+      color: var(--red);
+    }
+
+    .date-card.selected .date-card-weekday {
+      color: var(--red);
+    }
+
+    .date-card-check {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease);
+    }
+
+    .date-card.selected .date-card-check {
+      border-color: var(--red);
+      background: var(--red);
+    }
+
+    .date-card-check::after {
+      content: '';
+      display: none;
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--white);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    .date-card.selected .date-card-check::after {
+      display: block;
+    }
+
+    /* ============================================================
+       FORM — TIME PREFERENCE RADIO
+    ============================================================ */
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .radio-card {
+      flex: 1;
+      position: relative;
+      padding: 14px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease);
+      user-select: none;
+    }
+
+    .radio-card.selected {
+      border-color: var(--border-sel);
+      background: var(--red-soft);
+    }
+
+    .radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-card-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .radio-card.selected .radio-card-label {
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .radio-card-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--ink-light);
+      margin-top: 3px;
+    }
+
+    .radio-card.selected .radio-card-sub {
+      color: rgba(220, 39, 45, 0.65);
+    }
+
+    /* ============================================================
+       FORM — AGREEMENT
+    ============================================================ */
+    .agreement-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      background: var(--bg);
+    }
+
+    .agreement-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .agreement-check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .agreement-check-box {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease);
+    }
+
+    .agreement-check-row input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .agreement-check-row.checked .agreement-check-box {
+      border-color: var(--red);
+      background: var(--red);
+    }
+
+    .agreement-check-box::after {
+      content: '';
+      display: none;
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--white);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    .agreement-check-row.checked .agreement-check-box::after {
+      display: block;
+    }
+
+    .agreement-check-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       FORM — SUBMIT AREA
+    ============================================================ */
+    .form-submit-area {
+      margin-top: var(--space-lg);
+    }
+
+    .form-date-error {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--red);
+      margin-bottom: var(--space-md);
+    }
+
+    .form-date-error.visible {
+      display: block;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .submit-error-msg {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--red);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .submit-error-msg.visible {
+      display: block;
+    }
+
+    /* ============================================================
+       FORM — SUCCESS SCREEN
+    ============================================================ */
+    #success-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .success-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+    }
+
+    .success-mark::after {
+      content: '';
+      width: 12px;
+      height: 22px;
+      border: 3px solid var(--white);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px, -2px);
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .success-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 320px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .success-note {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--ink-light);
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-md);
+      max-width: 320px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .site-footer {
+      padding: var(--space-lg) 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .site-footer .container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 480px) {
+      .info-cards {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .info-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+        padding: 14px 16px;
+      }
+
+      .info-card-icon {
+        margin-bottom: 0;
+        font-size: 22px;
+      }
+
+      .radio-group {
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-image {
+        max-height: 640px;
+      }
+
+      .hero-content {
+        padding: 40px 32px;
+      }
+
+      .info-section,
+      .kit-section,
+      .notes-section,
+      .cta-section {
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       LANDING PAGE
+  ============================================================ -->
+  <div id="landing-page">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container">
+        <div class="brand-wordmark">TOCOBO<span> × </span>SIRIAI</div>
+        <div class="header-badge">Creator Recruitment</div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section" aria-label="팝업 이벤트 소개">
+      <img
+        class="hero-image"
+        src="images/671209664_18089595095611662_165543544357076035_n.jpg"
+        alt="TOCOBO IN MY SUN ERA 팝업 이벤트"
+      >
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">TOCOBO × SIRIAI POPUP</p>
+        <h1 class="hero-title">IN MY<br>SUN ERA</h1>
+        <p class="hero-subtitle">태양을 더 자유롭게 즐기는 시간<br>LECT 성수에서 함께해요</p>
+      </div>
+    </section>
+
+    <!-- Event Info -->
+    <section class="info-section" aria-labelledby="info-heading">
+      <div class="container">
+        <p class="section-eyebrow">About the Event</p>
+        <h2 class="section-title" id="info-heading">이런 팝업이에요</h2>
+        <p class="section-body">
+          TOCOBO의 비타민 선케어 라인을 직접 경험하고,<br>
+          나만의 썸머 콘텐츠를 만들어보세요.<br>
+          팔로워 조건 없이 누구나 신청 가능합니다.
+        </p>
+
+        <div class="info-cards" role="list">
+          <div class="info-card" role="listitem">
+            <div class="info-card-icon" aria-hidden="true">📅</div>
+            <div>
+              <div class="info-card-label">기간</div>
+              <div class="info-card-value">5/18(월) — 5/24(일)</div>
+            </div>
+          </div>
+          <div class="info-card" role="listitem">
+            <div class="info-card-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="info-card-label">장소</div>
+              <div class="info-card-value">LECT 성수 1F</div>
+            </div>
+          </div>
+          <div class="info-card" role="listitem">
+            <div class="info-card-icon" aria-hidden="true">✨</div>
+            <div>
+              <div class="info-card-label">대상</div>
+              <div class="info-card-value">인스타그램 크리에이터 누구나</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kit Section -->
+    <section class="kit-section" aria-labelledby="kit-heading">
+      <div class="container">
+        <p class="section-eyebrow">Creator Gift Kit</p>
+        <h2 class="section-title" id="kit-heading">참여 크리에이터 전원 증정</h2>
+
+        <div class="kit-image-wrap">
+          <img
+            class="kit-image"
+            src="images/tocobogift.jpg"
+            alt="TOCOBO 크리에이터 선물 키트"
+          >
+        </div>
+
+        <div class="kit-contents">
+          <div class="kit-contents-label">Kit 구성</div>
+          <ul class="kit-list" aria-label="키트 구성 목록">
+            <li>비타 소프트 데일리 선로션</li>
+            <li>비타민 립밤</li>
+            <li>TOCOBO 클렌징폼 DELUXE</li>
+            <li>비타베리포어 토너 샤쉐 2개입</li>
+            <li>샤쉐 (별도 SKU)</li>
+            <li>선로션 DELUXE</li>
+          </ul>
+        </div>
+
+        <div class="kit-value-row" role="note">
+          <span class="kit-value-label">총 구성 가치</span>
+          <span class="kit-value-amount">8만원 상당</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <section class="notes-section" aria-labelledby="notes-heading">
+      <div class="container">
+        <p class="section-eyebrow">안내사항</p>
+        <h2 class="section-title" id="notes-heading">신청 전 확인해주세요</h2>
+        <ul class="notes-list" aria-label="유의사항">
+          <li>팔로워 수 관계없이 누구나 신청 가능합니다.</li>
+          <li>방문 시 인스타그램 스토리 또는 피드 업로드를 권장합니다 (필수 아님).</li>
+          <li>선물 키트는 방문 당일 현장에서 수령합니다.</li>
+          <li>신청 후 선정 결과는 개별 연락드립니다.</li>
+          <li>일정이 변경될 경우 사전 안내드립니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 class="cta-headline" id="cta-heading">IN MY SUN ERA</h2>
+        <p class="cta-sub">지금 신청하고 TOCOBO와 함께하세요</p>
+        <button
+          class="btn-primary"
+          onclick="openForm()"
+          aria-label="크리에이터 모집 신청 폼 열기"
+        >
+          지금 신청하기
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">TOCOBO × SIRIAI</div>
+        <p class="footer-copy">
+          LECT 성수 1F · 2026년 5월 18일 — 24일<br>
+          본 페이지는 SIRIAI가 운영합니다. 문의: SIRIAI 인스타그램 DM
+        </p>
+      </div>
+    </footer>
+
+  </div>
+  <!-- / landing-page -->
+
+
+  <!-- ============================================================
+       FORM PAGE
+  ============================================================ -->
+  <div id="form-page" aria-label="크리에이터 신청 폼">
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Form Header -->
+    <div class="form-header">
+      <button
+        class="form-header-back"
+        onclick="handleBack()"
+        aria-label="이전으로"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        이전
+      </button>
+      <span class="form-header-title">크리에이터 신청</span>
+      <span class="form-header-step" id="header-step-indicator">1 / 3</span>
+    </div>
+
+    <!-- Form Body -->
+    <div class="form-body">
+
+      <!-- ── STEP 1: 기본 정보 ── -->
+      <div class="form-step active" id="step-1" role="group" aria-labelledby="step1-title">
+        <h2 class="step-title" id="step1-title">기본 정보를<br>입력해주세요</h2>
+        <p class="step-subtitle">간단한 정보로 신청할 수 있어요.</p>
+
+        <div class="form-field">
+          <label class="form-label" for="input-name">
+            이름 <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-name"
+            name="name"
+            placeholder="홍길동"
+            autocomplete="name"
+            aria-required="true"
+            aria-describedby="error-name"
+          >
+          <p class="field-error" id="error-name" role="alert">이름을 입력해주세요.</p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="input-phone">
+            전화번호 <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form-input"
+            type="tel"
+            id="input-phone"
+            name="phone"
+            placeholder="010-0000-0000"
+            autocomplete="tel"
+            inputmode="tel"
+            aria-required="true"
+            aria-describedby="error-phone"
+          >
+          <p class="field-error" id="error-phone" role="alert">올바른 전화번호를 입력해주세요. (010-XXXX-XXXX)</p>
+        </div>
+
+        <div class="form-submit-area">
+          <button
+            class="btn-primary"
+            onclick="nextStep(1)"
+            aria-label="다음 단계로"
+          >
+            다음
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: SNS 계정 ── -->
+      <div class="form-step" id="step-2" role="group" aria-labelledby="step2-title">
+        <h2 class="step-title" id="step2-title">인스타그램<br>계정을 알려주세요</h2>
+        <p class="step-subtitle">프로필 링크 또는 @계정명을 입력해주세요.</p>
+
+        <div class="form-field">
+          <label class="form-label" for="input-sns">
+            인스타그램 링크 <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-sns"
+            name="sns_link"
+            placeholder="instagram.com/username 또는 @username"
+            autocomplete="off"
+            inputmode="url"
+            aria-required="true"
+            aria-describedby="error-sns"
+          >
+          <p class="field-error" id="error-sns" role="alert">인스타그램 링크 또는 계정명을 입력해주세요.</p>
+        </div>
+
+        <div class="form-submit-area">
+          <button
+            class="btn-primary"
+            onclick="nextStep(2)"
+            aria-label="다음 단계로"
+          >
+            다음
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: 방문 일정 + 약관 ── -->
+      <div class="form-step" id="step-3" role="group" aria-labelledby="step3-title">
+        <h2 class="step-title" id="step3-title">방문 가능한<br>날짜를 선택해주세요</h2>
+        <p class="step-subtitle">중복 선택 가능합니다.</p>
+
+        <div class="date-group-label" id="date-group-label">방문 가능일 (복수 선택)</div>
+
+        <div class="date-grid" role="group" aria-labelledby="date-group-label">
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/18(월)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/18</div>
+            <div class="date-card-weekday">월요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/19(화)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/19</div>
+            <div class="date-card-weekday">화요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/20(수)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/20</div>
+            <div class="date-card-weekday">수요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/21(목)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/21</div>
+            <div class="date-card-weekday">목요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/22(금)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/22</div>
+            <div class="date-card-weekday">금요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/23(토)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/23</div>
+            <div class="date-card-weekday">토요일</div>
+          </label>
+
+          <label class="date-card">
+            <input type="checkbox" name="visit_dates" value="5/24(일)" onchange="toggleDateCard(this)">
+            <div class="date-card-check" aria-hidden="true"></div>
+            <div class="date-card-day">5/24</div>
+            <div class="date-card-weekday">일요일</div>
+          </label>
+
+        </div>
+
+        <p class="form-date-error" id="error-dates" role="alert">방문 가능일을 1개 이상 선택해주세요.</p>
+
+        <!-- Time Preference -->
+        <div class="date-group-label" id="time-group-label" style="margin-bottom: 12px;">시간대 선호</div>
+
+        <div class="radio-group" role="radiogroup" aria-labelledby="time-group-label">
+
+          <label class="radio-card">
+            <input type="radio" name="time_pref" value="주간 선호" onchange="toggleRadioCard(this)">
+            <div class="radio-card-label">주간</div>
+            <div class="radio-card-sub">오전·오후</div>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="time_pref" value="야간 선호" onchange="toggleRadioCard(this)">
+            <div class="radio-card-label">야간</div>
+            <div class="radio-card-sub">저녁·밤</div>
+          </label>
+
+          <label class="radio-card selected">
+            <input type="radio" name="time_pref" value="상관없음" onchange="toggleRadioCard(this)" checked>
+            <div class="radio-card-label">상관없음</div>
+            <div class="radio-card-sub">&nbsp;</div>
+          </label>
+
+        </div>
+
+        <!-- Agreement -->
+        <div class="agreement-box" role="group" aria-labelledby="agr-label">
+          <p class="agreement-text" id="agr-label">
+            위 정보(이름, 전화번호, SNS 계정)는 TOCOBO × SIRIAI 팝업 크리에이터 모집 목적으로만 수집·이용되며, 행사 종료 후 즉시 파기됩니다. 동의하지 않을 수 있으나, 미동의 시 신청이 불가합니다.
+          </p>
+          <label class="agreement-check-row" id="agr-row">
+            <input
+              type="checkbox"
+              id="input-agreement"
+              name="agreement"
+              onchange="toggleAgreement(this)"
+              aria-required="true"
+              aria-describedby="error-agreement"
+            >
+            <span class="agreement-check-box" aria-hidden="true"></span>
+            <span class="agreement-check-label">개인정보 수집·이용에 동의합니다</span>
+          </label>
+          <p class="field-error" id="error-agreement" role="alert" style="margin-top: 10px; margin-bottom: 0;">개인정보 수집·이용에 동의해주세요.</p>
+        </div>
+
+        <div class="form-submit-area">
+          <button
+            class="btn-primary"
+            id="submit-btn"
+            onclick="submitForm()"
+            aria-label="신청서 제출"
+          >
+            신청 완료하기
+          </button>
+          <p class="submit-error-msg" id="submit-error-msg">제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS SCREEN ── -->
+      <div id="success-screen" role="status" aria-live="polite">
+        <div class="success-mark" aria-hidden="true"></div>
+        <h2 class="success-title">신청이 완료됐어요!</h2>
+        <p class="success-body">
+          TOCOBO × SIRIAI 팝업 신청이 접수됐습니다.<br>
+          선정 결과는 개별 연락드릴게요.
+        </p>
+        <p class="success-note">
+          SIRIAI 인스타그램을 팔로우하면<br>
+          팝업 일정과 관련 소식을 가장 먼저 받아볼 수 있어요.
+        </p>
+      </div>
+
+    </div>
+    <!-- / form-body -->
+
+  </div>
+  <!-- / form-page -->
+
+
+  <script>
+    /* ============================================================
+       APPS SCRIPT ENDPOINT
+       ↓ Google Apps Script 배포 URL을 아래에 입력하세요
+    ============================================================ */
+    // const EP = 'https://script.google.com/macros/s/REPLACE_ME/exec';
+    const EP = null; // ← 연결 전 테스트 모드. URL 채우고 위 주석 해제.
+
+    /* ============================================================
+       STATE
+    ============================================================ */
+    let currentStep = 1;
+    const TOTAL_STEPS = 3;
+
+    /* ============================================================
+       PAGE TRANSITION
+    ============================================================ */
+    function openForm() {
+      document.getElementById('landing-page').style.display = 'none';
+      document.getElementById('form-page').style.display = 'block';
+      window.scrollTo(0, 0);
+      setStep(1);
+    }
+
+    function closePage() {
+      document.getElementById('form-page').style.display = 'none';
+      document.getElementById('landing-page').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    /* ============================================================
+       STEP NAVIGATION
+    ============================================================ */
+    function setStep(n) {
+      currentStep = n;
+
+      document.querySelectorAll('.form-step').forEach(function (el, i) {
+        el.classList.toggle('active', i + 1 === n);
+      });
+
+      var pct = Math.round((n / TOTAL_STEPS) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.querySelector('.progress-bar').setAttribute('aria-valuenow', n);
+      document.getElementById('header-step-indicator').textContent = n + ' / ' + TOTAL_STEPS;
+
+      window.scrollTo(0, 0);
+    }
+
+    function handleBack() {
+      if (currentStep > 1) {
+        setStep(currentStep - 1);
+      } else {
+        closePage();
+      }
+    }
+
+    function nextStep(fromStep) {
+      if (!validateStep(fromStep)) return;
+      setStep(fromStep + 1);
+    }
+
+    /* ============================================================
+       VALIDATION
+    ============================================================ */
+    function validateStep(step) {
+      var valid = true;
+
+      if (step === 1) {
+        var name = document.getElementById('input-name').value.trim();
+        var phone = document.getElementById('input-phone').value.trim();
+        var phonePattern = /^010-\d{3,4}-\d{4}$/;
+
+        if (name.length === 0) {
+          showFieldError('input-name', 'error-name');
+          valid = false;
+        } else {
+          clearFieldError('input-name', 'error-name');
+        }
+
+        if (!phonePattern.test(phone)) {
+          showFieldError('input-phone', 'error-phone');
+          valid = false;
+        } else {
+          clearFieldError('input-phone', 'error-phone');
+        }
+      }
+
+      if (step === 2) {
+        var sns = document.getElementById('input-sns').value.trim();
+        if (sns.length === 0) {
+          showFieldError('input-sns', 'error-sns');
+          valid = false;
+        } else {
+          clearFieldError('input-sns', 'error-sns');
+        }
+      }
+
+      return valid;
+    }
+
+    function showFieldError(inputId, errorId) {
+      document.getElementById(inputId).classList.add('has-error');
+      document.getElementById(errorId).classList.add('visible');
+    }
+
+    function clearFieldError(inputId, errorId) {
+      document.getElementById(inputId).classList.remove('has-error');
+      document.getElementById(errorId).classList.remove('visible');
+    }
+
+    /* ============================================================
+       CARD INTERACTIONS
+    ============================================================ */
+    function toggleDateCard(checkbox) {
+      var card = checkbox.closest('.date-card');
+      card.classList.toggle('selected', checkbox.checked);
+
+      var anyChecked = document.querySelectorAll('input[name="visit_dates"]:checked').length > 0;
+      document.getElementById('error-dates').classList.toggle('visible', !anyChecked);
+    }
+
+    function toggleRadioCard(radio) {
+      document.querySelectorAll('.radio-card').forEach(function (card) {
+        card.classList.remove('selected');
+      });
+      radio.closest('.radio-card').classList.add('selected');
+    }
+
+    function toggleAgreement(checkbox) {
+      var row = document.getElementById('agr-row');
+      row.classList.toggle('checked', checkbox.checked);
+      if (checkbox.checked) {
+        document.getElementById('error-agreement').classList.remove('visible');
+      }
+    }
+
+    /* ============================================================
+       PHONE AUTO-FORMAT
+    ============================================================ */
+    document.getElementById('input-phone').addEventListener('input', function () {
+      var val = this.value.replace(/\D/g, '');
+      if (val.length <= 3) {
+        this.value = val;
+      } else if (val.length <= 7) {
+        this.value = val.slice(0, 3) + '-' + val.slice(3);
+      } else {
+        this.value = val.slice(0, 3) + '-' + val.slice(3, 7) + '-' + val.slice(7, 11);
+      }
+    });
+
+    /* ============================================================
+       FORM SUBMISSION
+    ============================================================ */
+    function submitForm() {
+      var checkedDates = Array.from(
+        document.querySelectorAll('input[name="visit_dates"]:checked')
+      ).map(function (cb) { return cb.value; });
+
+      var agreement = document.getElementById('input-agreement').checked;
+      var valid = true;
+
+      if (checkedDates.length === 0) {
+        document.getElementById('error-dates').classList.add('visible');
+        valid = false;
+      }
+
+      if (!agreement) {
+        document.getElementById('error-agreement').classList.add('visible');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      var timePrefEl = document.querySelector('input[name="time_pref"]:checked');
+      var payload = {
+        campaign:    'TOCOBO × SIRIAI IN MY SUN ERA 2026',
+        name:        document.getElementById('input-name').value.trim(),
+        phone:       document.getElementById('input-phone').value.trim(),
+        sns_link:    document.getElementById('input-sns').value.trim(),
+        visit_dates: checkedDates.join(', '),
+        time_pref:   timePrefEl ? timePrefEl.value : '상관없음',
+        agr:         '동의',
+        timestamp:   new Date().toISOString(),
+      };
+
+      var btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>제출 중...';
+      document.getElementById('submit-error-msg').classList.remove('visible');
+
+      if (EP) {
+        fetch(EP, {
+          method:  'POST',
+          mode:    'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        })
+          .then(function () { showSuccess(); })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = '신청 완료하기';
+            document.getElementById('submit-error-msg').classList.add('visible');
+          });
+      } else {
+        // 테스트 모드 — Apps Script URL 연결 전
+        console.log('[TOCOBO × SIRIAI] 신청 페이로드 (테스트 모드):', payload);
+        setTimeout(showSuccess, 900);
+      }
+    }
+
+    function showSuccess() {
+      document.querySelectorAll('.form-step').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      document.getElementById('success-screen').style.display = 'block';
+      document.getElementById('progress-fill').style.width = '100%';
+      document.getElementById('header-step-indicator').textContent = '완료';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
