@@ -796,6 +796,20 @@
     /* ============================================================
        FORM — AGREEMENT
     ============================================================ */
+    .gift-reminder {
+      background: var(--red-soft);
+      border: 1px solid rgba(220,39,45,0.18);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+    .gift-reminder strong {
+      color: var(--red-dark);
+    }
+
     .agreement-box {
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
@@ -1076,7 +1090,7 @@
       <div class="hero-content">
         <p class="hero-eyebrow">TOCOBO × SIRIAI POPUP</p>
         <h1 class="hero-title">IN MY<br>SUN ERA</h1>
-        <p class="hero-subtitle">태양을 더 자유롭게 즐기는 시간<br>LECT 성수에서 함께해요</p>
+        <p class="hero-subtitle">지금 성수에서 진행 중이에요<br>오늘 신청하면 오늘·내일 방문도 가능해요</p>
       </div>
     </section>
 
@@ -1084,11 +1098,11 @@
     <section class="info-section" aria-labelledby="info-heading">
       <div class="container">
         <p class="section-eyebrow">About the Event</p>
-        <h2 class="section-title" id="info-heading">이런 팝업이에요</h2>
+        <h2 class="section-title" id="info-heading">함께해주실 수 있나요?</h2>
         <p class="section-body">
-          TOCOBO의 비타민 선케어 라인을 직접 경험하고,<br>
-          나만의 썸머 콘텐츠를 만들어보세요.<br>
-          팔로워 조건 없이 누구나 신청 가능합니다.
+          TOCOBO 비타민 선케어 팝업을 함께할<br>
+          크리에이터로 선별되어 안내드려요.<br>
+          아래 신청을 완료해주시면 참여가 바로 확정됩니다.
         </p>
 
         <div class="info-cards" role="list">
@@ -1107,10 +1121,10 @@
             </div>
           </div>
           <div class="info-card" role="listitem">
-            <div class="info-card-icon" aria-hidden="true">✨</div>
+            <div class="info-card-icon" aria-hidden="true">🎁</div>
             <div>
-              <div class="info-card-label">대상</div>
-              <div class="info-card-value">인스타그램 크리에이터 누구나</div>
+              <div class="info-card-label">혜택</div>
+              <div class="info-card-value">키트(8만원 상당) + 고료</div>
             </div>
           </div>
         </div>
@@ -1121,7 +1135,7 @@
     <section class="kit-section" aria-labelledby="kit-heading">
       <div class="container">
         <p class="section-eyebrow">Creator Gift Kit</p>
-        <h2 class="section-title" id="kit-heading">참여 크리에이터 전원 증정</h2>
+        <h2 class="section-title" id="kit-heading">콘텐츠 업로드 후 발송드려요</h2>
 
         <div class="kit-image-wrap">
           <img
@@ -1147,6 +1161,9 @@
           <span class="kit-value-label">총 구성 가치</span>
           <span class="kit-value-amount">8만원 상당</span>
         </div>
+        <p style="margin-top:14px; font-size:13px; color:var(--ink-mid); line-height:1.7; text-align:center;">
+          방문 후 콘텐츠 업로드 확인 시 고료와 함께 배송지로 일괄 발송드려요.
+        </p>
       </div>
     </section>
 
@@ -1156,11 +1173,11 @@
         <p class="section-eyebrow">안내사항</p>
         <h2 class="section-title" id="notes-heading">신청 전 확인해주세요</h2>
         <ul class="notes-list" aria-label="유의사항">
-          <li>팔로워 수 관계없이 누구나 신청 가능합니다.</li>
-          <li>방문 시 인스타그램 스토리 또는 피드 업로드를 권장합니다 (필수 아님).</li>
-          <li>선물 키트는 방문 당일 현장에서 수령합니다.</li>
-          <li>신청 후 선정 결과는 개별 연락드립니다.</li>
-          <li>일정이 변경될 경우 사전 안내드립니다.</li>
+          <li>방문 후 <strong>1일 이내</strong> 인스타그램 피드에 사진 <strong>3장 이상</strong> 업로드가 필요해요. (최대 5/24(일)까지)</li>
+          <li>인스타그램 계정은 <strong>공개 계정</strong>이어야 하며, 게시물에 <strong>@tocobo_official</strong>을 태그해주세요.</li>
+          <li>필수 해시태그: <strong>#TOCOBO #토코보 #토코보성수 #성수팝업 #InMySunEra #TOCOBOSunCare</strong></li>
+          <li>키트(8만원 상당)와 고료는 업로드 확인 후 입력하신 주소로 일괄 발송됩니다.</li>
+          <li>선정 여부는 신청 <strong>당일</strong> 개별 연락드립니다.</li>
         </ul>
       </div>
     </section>
@@ -1169,7 +1186,7 @@
     <section class="cta-section" aria-labelledby="cta-heading">
       <div class="container">
         <h2 class="cta-headline" id="cta-heading">IN MY SUN ERA</h2>
-        <p class="cta-sub">지금 신청하고 TOCOBO와 함께하세요</p>
+        <p class="cta-sub">신청하시면 바로 참여 확정이에요 — 오늘도 방문 가능합니다</p>
         <button
           class="btn-primary"
           onclick="openForm()"
@@ -1396,10 +1413,64 @@
 
         </div>
 
-        <!-- Agreement -->
+        <div class="form-submit-area">
+          <button
+            class="btn-primary"
+            onclick="nextStep(3)"
+            aria-label="다음 단계로"
+          >
+            다음
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: 배송지 ── -->
+      <div class="form-step" id="step-4" role="group" aria-labelledby="step4-title">
+        <h2 class="step-title" id="step4-title">배송지를<br>알려주세요</h2>
+
+        <div class="gift-reminder" role="note">
+          방문 후 콘텐츠를 업로드해주시면<br>
+          <strong>TOCOBO 키트(8만원 상당)와 고료</strong>를<br>
+          아래 주소로 발송드려요. 정확히 입력해주세요.
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="input-address">
+            도로명 주소 <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-address"
+            name="address"
+            placeholder="서울특별시 성동구 성수동 1가 000"
+            autocomplete="street-address"
+            aria-required="true"
+            aria-describedby="error-address"
+          >
+          <p class="field-error" id="error-address" role="alert">주소를 입력해주세요.</p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="input-address-detail">
+            상세주소 <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-address-detail"
+            name="address_detail"
+            placeholder="동/호수, 건물명 등"
+            autocomplete="address-line2"
+            aria-required="true"
+            aria-describedby="error-address-detail"
+          >
+          <p class="field-error" id="error-address-detail" role="alert">상세주소를 입력해주세요.</p>
+        </div>
+
         <div class="agreement-box" role="group" aria-labelledby="agr-label">
           <p class="agreement-text" id="agr-label">
-            위 정보(이름, 전화번호, SNS 계정)는 TOCOBO × SIRIAI 팝업 크리에이터 모집 목적으로만 수집·이용되며, 행사 종료 후 즉시 파기됩니다. 동의하지 않을 수 있으나, 미동의 시 신청이 불가합니다.
+            위 정보(이름, 전화번호, SNS 계정, 배송지 주소)는 TOCOBO × SIRIAI 팝업 크리에이터 모집 및 기프트 발송 목적으로만 수집·이용되며, 행사 종료 후 즉시 파기됩니다. 동의하지 않을 수 있으나, 미동의 시 신청이 불가합니다.
           </p>
           <label class="agreement-check-row" id="agr-row">
             <input
@@ -1435,11 +1506,11 @@
         <h2 class="success-title">신청이 완료됐어요!</h2>
         <p class="success-body">
           TOCOBO × SIRIAI 팝업 신청이 접수됐습니다.<br>
-          선정 결과는 개별 연락드릴게요.
+          선정 여부는 오늘 중으로 개별 연락드릴게요.
         </p>
         <p class="success-note">
-          SIRIAI 인스타그램을 팔로우하면<br>
-          팝업 일정과 관련 소식을 가장 먼저 받아볼 수 있어요.
+          방문 후 피드(사진 3장 이상)를 1일 이내에 업로드해주세요.<br>
+          #TOCOBO #InMySunEra @tocobo_official 필수 태그 잊지 마세요.
         </p>
       </div>
 
@@ -1461,7 +1532,7 @@
        STATE
     ============================================================ */
     let currentStep = 1;
-    const TOTAL_STEPS = 3;
+    const TOTAL_STEPS = 4;
 
     /* ============================================================
        PAGE TRANSITION
@@ -1546,6 +1617,31 @@
         }
       }
 
+      if (step === 4) {
+        var address = document.getElementById('input-address').value.trim();
+        var addressDetail = document.getElementById('input-address-detail').value.trim();
+        var agreement = document.getElementById('input-agreement').checked;
+
+        if (address.length === 0) {
+          showFieldError('input-address', 'error-address');
+          valid = false;
+        } else {
+          clearFieldError('input-address', 'error-address');
+        }
+
+        if (addressDetail.length === 0) {
+          showFieldError('input-address-detail', 'error-address-detail');
+          valid = false;
+        } else {
+          clearFieldError('input-address-detail', 'error-address-detail');
+        }
+
+        if (!agreement) {
+          document.getElementById('error-agreement').classList.add('visible');
+          valid = false;
+        }
+      }
+
       return valid;
     }
 
@@ -1603,35 +1699,24 @@
        FORM SUBMISSION
     ============================================================ */
     function submitForm() {
+      if (!validateStep(4)) return;
+
       var checkedDates = Array.from(
         document.querySelectorAll('input[name="visit_dates"]:checked')
       ).map(function (cb) { return cb.value; });
 
-      var agreement = document.getElementById('input-agreement').checked;
-      var valid = true;
-
-      if (checkedDates.length === 0) {
-        document.getElementById('error-dates').classList.add('visible');
-        valid = false;
-      }
-
-      if (!agreement) {
-        document.getElementById('error-agreement').classList.add('visible');
-        valid = false;
-      }
-
-      if (!valid) return;
-
       var timePrefEl = document.querySelector('input[name="time_pref"]:checked');
       var payload = {
-        campaign:    'TOCOBO × SIRIAI IN MY SUN ERA 2026',
-        name:        document.getElementById('input-name').value.trim(),
-        phone:       document.getElementById('input-phone').value.trim(),
-        sns_link:    document.getElementById('input-sns').value.trim(),
-        visit_dates: checkedDates.join(', '),
-        time_pref:   timePrefEl ? timePrefEl.value : '상관없음',
-        agr:         '동의',
-        timestamp:   new Date().toISOString(),
+        campaign:       'TOCOBO × SIRIAI IN MY SUN ERA 2026',
+        name:           document.getElementById('input-name').value.trim(),
+        phone:          document.getElementById('input-phone').value.trim(),
+        sns_link:       document.getElementById('input-sns').value.trim(),
+        visit_dates:    checkedDates.join(', '),
+        time_pref:      timePrefEl ? timePrefEl.value : '상관없음',
+        address:        document.getElementById('input-address').value.trim(),
+        address_detail: document.getElementById('input-address-detail').value.trim(),
+        agr:            '동의',
+        timestamp:      new Date().toISOString(),
       };
 
       var btn = document.getElementById('submit-btn');

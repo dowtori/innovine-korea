@@ -36,6 +36,8 @@ const HEADERS = [
   'visit_dates',
   'time_pref',
   'agr',
+  'address',
+  'address_detail',
   'user_agent',
 ];
 
@@ -63,6 +65,8 @@ function doPost(e) {
       data.visit_dates || '',
       data.time_pref || '',
       data.agr || '',
+      data.address || '',
+      data.address_detail || '',
       userAgent,
     ]);
 
