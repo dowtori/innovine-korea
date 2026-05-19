@@ -1857,7 +1857,11 @@
         campaign:       'TOCOBO × SIRIAI IN MY SUN ERA 2026',
         name:           document.getElementById('input-name').value.trim(),
         phone:          document.getElementById('input-phone').value.trim(),
-        sns_link:       document.getElementById('input-sns').value.trim(),
+        sns_link:       (function() {
+          var v = document.getElementById('input-sns').value.trim();
+          if (v.startsWith('@')) return 'https://www.instagram.com/' + v.slice(1) + '/';
+          return v;
+        })(),
         visit_dates:    checkedDates.join(', '),
         time_pref:      timePrefEl ? timePrefEl.value : '야간',
         address:        document.getElementById('input-address').value.trim(),
