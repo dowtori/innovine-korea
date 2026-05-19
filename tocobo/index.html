@@ -670,11 +670,16 @@
       background: var(--red-soft);
     }
 
-    .date-card input[type="checkbox"] {
+    .date-card input[type="radio"] {
       position: absolute;
       opacity: 0;
       width: 0;
       height: 0;
+    }
+
+    .date-card.disabled {
+      opacity: 0.35;
+      pointer-events: none;
     }
 
     .date-card-day {
@@ -791,6 +796,25 @@
 
     .radio-card.selected .radio-card-sub {
       color: rgba(220, 39, 45, 0.65);
+    }
+
+    .radio-card-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--red);
+      background: var(--red-soft);
+      border-radius: var(--radius-pill);
+      padding: 2px 7px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .radio-card.selected .radio-card-badge {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     /* ============================================================
@@ -1018,6 +1042,68 @@
     }
 
     /* ============================================================
+       LANDING — REFERENCE SECTION
+    ============================================================ */
+    .ref-section {
+      padding: var(--space-lg) 0;
+      background: var(--white);
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .ref-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 14px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      text-decoration: none;
+      transition: border-color var(--dur-fast) var(--ease),
+                  box-shadow var(--dur-fast) var(--ease);
+    }
+
+    .ref-card:hover {
+      border-color: var(--red);
+      box-shadow: 0 2px 12px rgba(220, 39, 45, 0.1);
+    }
+
+    .ref-card-ig-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ref-card-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-mid);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .ref-card-cta {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+      text-align: center;
+    }
+
+    /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 480px) {
@@ -1083,7 +1169,7 @@
     <section class="hero-section" aria-label="팝업 이벤트 소개">
       <img
         class="hero-image"
-        src="images/671209664_18089595095611662_165543544357076035_n.jpg"
+        src="images/1758240049128-.jpg"
         alt="TOCOBO IN MY SUN ERA 팝업 이벤트"
       >
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -1124,7 +1210,7 @@
             <div class="info-card-icon" aria-hidden="true">🎁</div>
             <div>
               <div class="info-card-label">혜택</div>
-              <div class="info-card-value">키트(8만원 상당) + 고료</div>
+              <div class="info-card-value">키트(8만원 상당) + 고료 3만원</div>
             </div>
           </div>
         </div>
@@ -1162,7 +1248,7 @@
           <span class="kit-value-amount">8만원 상당</span>
         </div>
         <p style="margin-top:14px; font-size:13px; color:var(--ink-mid); line-height:1.7; text-align:center;">
-          방문 후 콘텐츠 업로드 확인 시 고료와 함께 배송지로 일괄 발송드려요.
+          방문 후 콘텐츠 업로드 확인 시 고료(3만원)와 함께 배송지로 일괄 발송드려요.
         </p>
       </div>
     </section>
@@ -1176,9 +1262,53 @@
           <li>방문 후 <strong>1일 이내</strong> 인스타그램 피드에 사진 <strong>3장 이상</strong> 업로드가 필요해요. (최대 5/24(일)까지)</li>
           <li>인스타그램 계정은 <strong>공개 계정</strong>이어야 하며, 게시물에 <strong>@tocobo_official</strong>을 태그해주세요.</li>
           <li>필수 해시태그: <strong>#TOCOBO #토코보 #토코보성수 #성수팝업 #InMySunEra #TOCOBOSunCare</strong></li>
-          <li>키트(8만원 상당)와 고료는 업로드 확인 후 입력하신 주소로 일괄 발송됩니다.</li>
+          <li>키트(8만원 상당)와 고료(3만원)는 업로드 확인 후 입력하신 주소로 일괄 발송됩니다.</li>
+          <li>업로드된 콘텐츠는 TOCOBO 브랜드 채널에서 2차 활용될 수 있습니다.</li>
           <li>선정 여부는 신청 <strong>당일</strong> 개별 연락드립니다.</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Reference Content -->
+    <section class="ref-section" aria-labelledby="ref-heading">
+      <div class="container">
+        <p class="section-eyebrow">Reference</p>
+        <h2 class="section-title" id="ref-heading">이런 콘텐츠예요</h2>
+        <p class="section-body" style="margin-bottom: 16px;">업로드 방향을 참고해보세요.</p>
+
+        <div class="ref-grid">
+          <a
+            class="ref-card"
+            href="https://www.instagram.com/p/DYWxLNpTlFN/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="참고 게시물 1 — 인스타그램에서 보기"
+          >
+            <div class="ref-card-ig-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div>
+              <div class="ref-card-label">참고 게시물 #1</div>
+              <div class="ref-card-cta">인스타그램 보기 →</div>
+            </div>
+          </a>
+
+          <a
+            class="ref-card"
+            href="https://www.instagram.com/p/DYSGa9UkfYP/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="참고 게시물 2 — 인스타그램에서 보기"
+          >
+            <div class="ref-card-ig-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div>
+              <div class="ref-card-label">참고 게시물 #2</div>
+              <div class="ref-card-cta">인스타그램 보기 →</div>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1326,59 +1456,59 @@
         </div>
       </div>
 
-      <!-- ── STEP 3: 방문 일정 + 약관 ── -->
+      <!-- ── STEP 3: 방문 일정 ── -->
       <div class="form-step" id="step-3" role="group" aria-labelledby="step3-title">
-        <h2 class="step-title" id="step3-title">방문 가능한<br>날짜를 선택해주세요</h2>
-        <p class="step-subtitle">중복 선택 가능합니다.</p>
+        <h2 class="step-title" id="step3-title">방문 예정일을<br>알려주세요</h2>
+        <p class="step-subtitle">하루를 선택해주세요.</p>
 
-        <div class="date-group-label" id="date-group-label">방문 가능일 (복수 선택)</div>
+        <div class="date-group-label" id="date-group-label">방문 예정일</div>
 
-        <div class="date-grid" role="group" aria-labelledby="date-group-label">
+        <div class="date-grid" role="radiogroup" aria-labelledby="date-group-label">
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/18(월)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-18">
+            <input type="radio" name="visit_dates" value="5/18(월)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/18</div>
             <div class="date-card-weekday">월요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/19(화)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-19">
+            <input type="radio" name="visit_dates" value="5/19(화)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/19</div>
             <div class="date-card-weekday">화요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/20(수)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-20">
+            <input type="radio" name="visit_dates" value="5/20(수)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/20</div>
             <div class="date-card-weekday">수요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/21(목)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-21">
+            <input type="radio" name="visit_dates" value="5/21(목)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/21</div>
             <div class="date-card-weekday">목요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/22(금)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-22">
+            <input type="radio" name="visit_dates" value="5/22(금)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/22</div>
             <div class="date-card-weekday">금요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/23(토)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-23">
+            <input type="radio" name="visit_dates" value="5/23(토)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/23</div>
             <div class="date-card-weekday">토요일</div>
           </label>
 
-          <label class="date-card">
-            <input type="checkbox" name="visit_dates" value="5/24(일)" onchange="toggleDateCard(this)">
+          <label class="date-card" data-date="2026-05-24">
+            <input type="radio" name="visit_dates" value="5/24(일)" onchange="toggleDateCard(this)">
             <div class="date-card-check" aria-hidden="true"></div>
             <div class="date-card-day">5/24</div>
             <div class="date-card-weekday">일요일</div>
@@ -1386,29 +1516,23 @@
 
         </div>
 
-        <p class="form-date-error" id="error-dates" role="alert">방문 가능일을 1개 이상 선택해주세요.</p>
+        <p class="form-date-error" id="error-dates" role="alert">방문 예정일을 선택해주세요.</p>
 
-        <!-- Time Preference -->
-        <div class="date-group-label" id="time-group-label" style="margin-bottom: 12px;">시간대 선호</div>
+        <!-- Time Slot -->
+        <div class="date-group-label" id="time-group-label" style="margin-bottom: 12px;">방문 시간대</div>
 
         <div class="radio-group" role="radiogroup" aria-labelledby="time-group-label">
 
-          <label class="radio-card">
-            <input type="radio" name="time_pref" value="주간 선호" onchange="toggleRadioCard(this)">
-            <div class="radio-card-label">주간</div>
-            <div class="radio-card-sub">오전·오후</div>
-          </label>
-
-          <label class="radio-card">
-            <input type="radio" name="time_pref" value="야간 선호" onchange="toggleRadioCard(this)">
-            <div class="radio-card-label">야간</div>
-            <div class="radio-card-sub">저녁·밤</div>
-          </label>
-
           <label class="radio-card selected">
-            <input type="radio" name="time_pref" value="상관없음" onchange="toggleRadioCard(this)" checked>
-            <div class="radio-card-label">상관없음</div>
-            <div class="radio-card-sub">&nbsp;</div>
+            <input type="radio" name="time_pref" value="야간" onchange="toggleRadioCard(this)" checked>
+            <div class="radio-card-label">야간 <span class="radio-card-badge">추천</span></div>
+            <div class="radio-card-sub">오후 8시 — 9시</div>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="time_pref" value="주간" onchange="toggleRadioCard(this)">
+            <div class="radio-card-label">주간</div>
+            <div class="radio-card-sub">오전 11시 — 오후 8시</div>
           </label>
 
         </div>
@@ -1430,7 +1554,7 @@
 
         <div class="gift-reminder" role="note">
           방문 후 콘텐츠를 업로드해주시면<br>
-          <strong>TOCOBO 키트(8만원 상당)와 고료</strong>를<br>
+          <strong>TOCOBO 키트(8만원 상당)와 고료(3만원)</strong>를<br>
           아래 주소로 발송드려요. 정확히 입력해주세요.
         </div>
 
@@ -1617,6 +1741,16 @@
         }
       }
 
+      if (step === 3) {
+        var dateChecked = document.querySelector('input[name="visit_dates"]:checked');
+        if (!dateChecked) {
+          document.getElementById('error-dates').classList.add('visible');
+          valid = false;
+        } else {
+          document.getElementById('error-dates').classList.remove('visible');
+        }
+      }
+
       if (step === 4) {
         var address = document.getElementById('input-address').value.trim();
         var addressDetail = document.getElementById('input-address-detail').value.trim();
@@ -1658,13 +1792,27 @@
     /* ============================================================
        CARD INTERACTIONS
     ============================================================ */
-    function toggleDateCard(checkbox) {
-      var card = checkbox.closest('.date-card');
-      card.classList.toggle('selected', checkbox.checked);
-
-      var anyChecked = document.querySelectorAll('input[name="visit_dates"]:checked').length > 0;
-      document.getElementById('error-dates').classList.toggle('visible', !anyChecked);
+    function toggleDateCard(radio) {
+      document.querySelectorAll('.date-card').forEach(function (card) {
+        card.classList.remove('selected');
+      });
+      radio.closest('.date-card').classList.add('selected');
+      document.getElementById('error-dates').classList.remove('visible');
     }
+
+    function initDateCards() {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      document.querySelectorAll('.date-card[data-date]').forEach(function (card) {
+        var d = new Date(card.getAttribute('data-date'));
+        if (d < today) {
+          card.classList.add('disabled');
+          var input = card.querySelector('input[type="radio"]');
+          if (input) input.disabled = true;
+        }
+      });
+    }
+    initDateCards();
 
     function toggleRadioCard(radio) {
       document.querySelectorAll('.radio-card').forEach(function (card) {
@@ -1712,7 +1860,7 @@
         phone:          document.getElementById('input-phone').value.trim(),
         sns_link:       document.getElementById('input-sns').value.trim(),
         visit_dates:    checkedDates.join(', '),
-        time_pref:      timePrefEl ? timePrefEl.value : '상관없음',
+        time_pref:      timePrefEl ? timePrefEl.value : '야간',
         address:        document.getElementById('input-address').value.trim(),
         address_detail: document.getElementById('input-address-detail').value.trim(),
         agr:            '동의',
