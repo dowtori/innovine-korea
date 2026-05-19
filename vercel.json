@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/tocobo/", "permanent": false }
+  ]
+}
