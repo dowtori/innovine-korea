@@ -447,6 +447,62 @@
     }
 
     /* ============================================================
+       LANDING — CLOSED STATE
+    ============================================================ */
+    .closed-banner {
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 20px;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    .closed-banner strong {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-right: 8px;
+      padding: 2px 8px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+    }
+
+    .closed-eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: var(--red-soft);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      margin-bottom: 16px;
+    }
+
+    .closed-follow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 360px;
+      margin: 18px auto 0;
+    }
+
+    .closed-follow strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ============================================================
        BUTTONS
     ============================================================ */
     .btn-primary {
@@ -1160,9 +1216,14 @@
     <header class="site-header">
       <div class="container">
         <div class="brand-wordmark">TOCOBO<span> × </span>SIRIAI</div>
-        <div class="header-badge">Creator Recruitment</div>
+        <div class="header-badge">Recruitment Closed</div>
       </div>
     </header>
+
+    <!-- Closed banner -->
+    <div class="closed-banner" role="status" aria-live="polite">
+      <strong>모집 마감</strong>예상보다 많은 분들이 신청해주셔서 모집을 조기 마감했어요.
+    </div>
 
     <!-- Hero -->
     <section class="hero-section" aria-label="팝업 이벤트 소개">
@@ -1176,7 +1237,7 @@
       <div class="hero-content">
         <p class="hero-eyebrow">TOCOBO × SIRIAI POPUP</p>
         <h1 class="hero-title">IN MY<br>SUN ERA</h1>
-        <p class="hero-subtitle">지금 성수에서 진행 중이에요<br>오늘 신청하면 오늘·내일 방문도 가능해요</p>
+        <p class="hero-subtitle">함께해주신 모든 크리에이터 분들께<br>진심으로 감사드려요.</p>
       </div>
     </section>
 
@@ -1315,16 +1376,22 @@
     <!-- CTA -->
     <section class="cta-section" aria-labelledby="cta-heading">
       <div class="container">
-        <h2 class="cta-headline" id="cta-heading">IN MY SUN ERA</h2>
-        <p class="cta-sub">신청하시면 바로 참여 확정이에요 — 오늘도 방문 가능합니다</p>
-        <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-light);margin:0 0 20px;letter-spacing:0.02em;">선착순 최대 100명</p>
+        <span class="closed-eyebrow">Recruitment Closed</span>
+        <h2 class="cta-headline" id="cta-heading">모집이 조기 마감되었어요</h2>
+        <p class="cta-sub">예상보다 많은 분들이 함께해주셔서<br>신청을 마감합니다.</p>
         <button
           class="btn-primary"
-          onclick="openForm()"
-          aria-label="크리에이터 모집 신청 폼 열기"
+          disabled
+          aria-disabled="true"
+          aria-label="모집이 마감되었습니다"
         >
-          지금 신청하기
+          모집 마감
         </button>
+        <p class="closed-follow">
+          관심 가져주셔서 진심으로 감사드려요.<br>
+          <strong>더 좋은 캠페인으로 곧 다시 찾아뵐게요.</strong><br>
+          다음 기회에 SIRIAI 인스타그램을 통해 안내드릴 예정이에요.
+        </p>
       </div>
     </section>
 
@@ -1658,11 +1725,16 @@
     ============================================================ */
     let currentStep = 1;
     const TOTAL_STEPS = 4;
+    const RECRUITMENT_CLOSED = true;
 
     /* ============================================================
        PAGE TRANSITION
     ============================================================ */
     function openForm() {
+      if (RECRUITMENT_CLOSED) {
+        alert('모집이 조기 마감되었습니다. 더 좋은 캠페인으로 곧 다시 찾아뵐게요.');
+        return;
+      }
       document.getElementById('landing-page').style.display = 'none';
       document.getElementById('form-page').style.display = 'block';
       window.scrollTo(0, 0);
@@ -1848,6 +1920,10 @@
        FORM SUBMISSION
     ============================================================ */
     function submitForm() {
+      if (RECRUITMENT_CLOSED) {
+        alert('모집이 조기 마감되어 신청을 받을 수 없어요. 더 좋은 캠페인으로 곧 다시 찾아뵐게요.');
+        return;
+      }
       if (!validateStep(4)) return;
 
       var checkedDates = Array.from(
